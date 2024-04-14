@@ -1,7 +1,7 @@
 {
     "app-id": "org.darktable.Darktable",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "44",
+    "runtime-version": "45",
     "sdk": "org.gnome.Sdk",
     "command": "darktable",
     "rename-desktop-file": "org.darktable.darktable.desktop",
@@ -15,13 +15,10 @@
         "--filesystem=host",
         "--talk-name=org.freedesktop.secrets",
         "--metadata=X-DConf=migrate-path=/org/darktable/Darktable/",
-        /* Needed for colord to work */
         "--system-talk-name=org.freedesktop.ColorManager",
-        /* Needed for gvfs to work */
         "--talk-name=org.gtk.vfs.*",
         "--filesystem=xdg-run/gvfs",
         "--filesystem=xdg-run/gvfsd",
-        /* For USB, until there is a better way in flatpak */
         "--device=all"
     ],
     "cleanup": [
@@ -37,8 +34,10 @@
         "/lib/girepository-*",
         "/man",
         "/share/doc",
-        "/share/gtk-doc/html/libosmgpsmap",
+        "/share/gir-1.0",
+        "/share/gtk-doc",
         "/share/man",
+        "/share/vala",
         "*.a",
         "*.la"
     ],
@@ -75,8 +74,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/lensfun/lensfun/archive/refs/tags/v0.3.3.tar.gz",
-                    "sha256": "57ba5a0377f24948972339e18be946af12eda22b7c707eb0ddd26586370f6765"
+                    "url": "https://github.com/lensfun/lensfun/archive/refs/tags/v0.3.4.tar.gz",
+                    "sha256": "dafb39c08ef24a0e2abd00d05d7341b1bf1f0c38bfcd5a4c69cf5f0ecb6db112"
                 },
                 {
                     "type": "file",
@@ -89,10 +88,9 @@
                 },
                 {
                     "type": "git",
-                    /* used only for database*/
                     "dest": "lensfun-git",
                     "url": "https://github.com/lensfun/lensfun.git",
-                    "commit": "c661a4a6405bb63ad390a5bafc2d8d8e482c0355"
+                    "commit": "f882f1bac3c5b1fecc3a04f5ca0c7538f8c6a2d1"
                 }
             ]
         },
@@ -109,8 +107,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/Exiv2/exiv2/releases/download/v0.27.6/exiv2-0.27.6-Source.tar.gz",
-                    "sha256": "4c192483a1125dc59a3d70b30d30d32edace9e14adf52802d2f853abf72db8a6"
+                    "url": "https://github.com/Exiv2/exiv2/releases/download/v0.27.7/exiv2-0.27.7-Source.tar.gz",
+                    "sha256": "70629dc27e3d4dd5c3fa91afbea93166d338b1de284e6a4c44bbf9dcfe7bbc6d"
                 }
             ]
         },
@@ -153,8 +151,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/PortMidi/portmidi/archive/refs/tags/v2.0.3.tar.gz",
-                    "sha256": "934f80e1b09762664d995e7ab5a9932033bc70639e8ceabead817183a54c60d0"
+                    "url": "https://github.com/PortMidi/portmidi/archive/refs/tags/v2.0.4.tar.gz",
+                    "sha256": "64893e823ae146cabd3ad7f9a9a9c5332746abe7847c557b99b2577afa8a607c"
                 }
             ]
         },
@@ -203,8 +201,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/gphoto/libgphoto2/releases/download/v2.5.30/libgphoto2-2.5.30.tar.bz2",
-                    "sha256": "ee61a1dac6ad5cf711d114e06b90a6d431961a6e7ec59f4b757a7cd77b1c0fb4"
+                    "url": "https://github.com/gphoto/libgphoto2/releases/download/v2.5.31/libgphoto2-2.5.31.tar.bz2",
+                    "sha256": "4f81c34c0b812bee67afd5f144940fbcbe01a2055586a6a1fa2d0626024a545b"
                 }
             ]
         },
@@ -228,8 +226,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v3.1.3.tar.gz",
-                    "sha256": "0bf7ec51162c4d17a4c5b850fb3f6f7a195cff9fa71f4da7735f74d7b5124320"
+                    "url": "https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v3.1.7.tar.gz",
+                    "sha256": "bff1fa140f4af0e7f02c6cb78d41b9a7d5508e6bcdfda3a583e35460eb6d4b47"
                 }
             ],
             "cleanup": [
@@ -243,14 +241,13 @@
             "config-opts": [
                 "-DOPENEXR_BUILD_TOOLS=OFF",
                 "-DOPENEXR_INSTALL_EXAMPLES=OFF",
-                "-DOPENEXR_INSTALL_TOOLS=OFF",
-                "-DDOCS=OFF"
+                "-DOPENEXR_INSTALL_TOOLS=OFF"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v3.1.3.tar.gz",
-                    "sha256": "6f70a624d1321319d8269a911c4032f24950cde52e76f46e9ecbebfcb762f28c"
+                    "url": "https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v3.1.7.tar.gz",
+                    "sha256": "78dbca39115a1c526e6728588753955ee75fa7f5bb1a6e238bed5b6d66f91fd7"
                 }
             ],
             "cleanup": [
@@ -273,8 +270,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.38/GraphicsMagick-1.3.38.tar.xz",
-                    "sha256": "d60cd9db59351d2b9cb19beb443170acaa28f073d13d258f67b3627635e32675"
+                    "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/1.3.42/GraphicsMagick-1.3.42.tar.xz",
+                    "sha256": "484fccfd2b2faf6c2ba9151469ece5072bcb91ba4ed73e75ed3d8e46c759d557"
                 }
             ]
         },
@@ -338,8 +335,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/AOMediaCodec/libavif/archive/refs/tags/v0.9.1.tar.gz",
-                    "sha256": "8526f3fff34a05a51d7c703cdcf1d0d38c939b5b6dd4bb7d3a3405ddad88186c"
+                    "url": "https://github.com/AOMediaCodec/libavif/archive/refs/tags/v0.9.3.tar.gz",
+                    "sha256": "bcd9a1f57f982a9615eb7e2faf87236dc88eb1d0c886f3471c7440ead605060d"
                 }
             ]
         },
@@ -360,6 +357,9 @@
         {
             "name": "libheif",
             "buildsystem": "cmake-ninja",
+            "build-options": {
+                "cxxflags": "-Wno-error=maybe-uninitialized"
+            },
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                 "-DWITH_EXAMPLES=0",
@@ -554,14 +554,11 @@
                 "-DTESTBUILD_OPENCL_PROGRAMS=OFF"
             ],
             "builddir": true,
-            "post-install": [
-                "appstream-util modify $FLATPAK_DEST/share/metainfo/org.darktable.darktable.appdata.xml id $FLATPAK_ID"
-            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/darktable-org/darktable/releases/download/release-4.4.1/darktable-4.4.1.tar.xz",
-                    "sha256": "e043d38d2e8adb67af7690b12b535a40e8ec7bea05cfa8684db8b21a626e0f0d",
+                    "url": "https://github.com/darktable-org/darktable/releases/download/release-4.6.1/darktable-4.6.1.tar.xz",
+                    "sha256": "16edc0a070293e2d3cda4ea10e49bda9bde932e23f9e62e2fa2e7ac74acf7afd",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/darktable-org/darktable/releases/latest",
@@ -571,7 +568,7 @@
                 },
                 {
                     "type": "patch",
-                    "path": "darktable-appdata.patch"
+                    "path": "patches/darktable-appdata-version.patch"
                 }
             ]
         }
